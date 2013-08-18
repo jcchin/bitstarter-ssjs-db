@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!--link rel="shortcut icon" href="../../assets/ico/favicon.png"-->
+    <title>Heatmap Layout</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/css/bootstrap.min.css">
+    <!-- Bootstrap core CSS -->
+    <!--link href="../../dist/css/bootstrap.css" rel="stylesheet">
+    
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.min.js"></script>
+    
+    <!-- Custom styles for this template -->
+    <link href="starter-template.css" rel="stylesheet">
+  </head>
+
+  <style>
+    
+  </style>
+  
+  
+  <body>
+
+    <div class="container">
+
+      
+        <div class="row">
+         <div class="col-xs-3 col-md-3 list1">
+          <table class="table table-striped">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Event</th>
+              <th>Rank</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><button type="button" class="btn btn-primary btn-small" data-toggle="button">Ignore</button></td>
+              <td>Mission Impossible</td>
+              <td><span class="badge">3</span></td>
+            </tr>
+            <tr>
+              <td><button type="button" class="btn btn-primary btn-small" data-toggle="button">Ignore</button></td>
+              <td>Pacific Rim</td>
+              <td><span class="badge">11</span></td>
+            </tr>
+            <tr>
+              <td><button type="button" class="btn btn-primary btn-small" data-toggle="button">Ignore</button></td>
+              <td>Finding Nemo</td>
+              <td><span class="badge">-2</span></td>
+            </tr>
+          </tbody>
+        </table>
+       </div>  <!-- /.list1 -->
+       <div class="col-xs-3 col-md-3 people">
+         <table class="table text-center">
+            <thead>
+            <tr>
+              <th style="width: 900px;"><br></th>
+              <th>Exclude?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="danger">
+              <td>Justin</td>
+              <td><div class="checkbox"><input type="checkbox"></div></td>
+            </tr>
+            <tr class="danger">
+              <td>Sharon</td>
+              <td><div class="checkbox"><input type="checkbox"></div></td>
+            </tr>
+            <tr class="success">
+              <td>Eli</td>
+              <td><div class="checkbox"><input type="checkbox"></div></td>
+            </tr class="success">
+            <tr class="danger">
+              <td>Siri</td>
+              <td><div class="checkbox"><input type="checkbox"></div></td>
+            </tr>
+            <tr class="success">
+              <td>Jeff</td>
+              <td><div class="checkbox"><input type="checkbox"></div></td>
+            </tr>
+            <tr class="danger">
+              <td>Barb</td>
+              <td><div class="checkbox"><input type="checkbox"></div></td>
+            </tr>
+          </tbody>
+         </table>
+       </div>
+        
+       <div class="col-xs-6 col-md-6 heatmap">
+         <table class="table table-hover table-condensed">
+            <thead>
+            <tr>
+              <th style="width: 10px;">Time</th>
+              <th style="width: 900px;">..</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1pm</td>
+              <td class="active">...</td>
+            </tr>
+            <tr>
+              <td>2pm</td>
+              <td class="success">...</td>
+            </tr>
+            <tr>
+              <td>3pm</td>
+              <td class="success">...</td>
+            </tr>
+            <tr>
+              <td>4pm</td>
+              <td class="warning">...</td>
+            </tr>
+            <tr>
+              <td>5pm</td>
+              <td class="danger">...</td>
+            </tr>
+            <tr>
+              <td>6pm</td>
+              <td class="danger">...</td>
+            </tr>
+            <tr>
+              <td>7pm</td>
+              <td class="warning">...</td>
+            </tr>
+          </tbody>
+         </table>
+       </div> 
+        
+      </div> <!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <script src="../../assets/js/jquery.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+  </body>
+</html>

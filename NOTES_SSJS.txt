@@ -1,0 +1,71 @@
+.
+|-- .env.dummy      # Template for .env; use to keep private API keys out of git repo
+|-- .pgpass         # Username/password file for local Postgres install
+                    # It is used by pgsetup.sh to create a local Postgres database 
+                    # named bitdb0 which can be accessed by username ubuntu with pass bitpass0. 
+                    # It is also used by models/index.js to set up a connection between a Sequelize 
+                    # Order class and a table in this same bitdb0
+
+
+|-- .gitignore      # Define files (like .env) that won't be committed to git
+|
+|-- Procfile        # Specify what script is run on Heroku
+|-- README.md       # Markdown documentation; formatted for github
+|-- index.html      # Main page, with CSS/JS/img assets imported via link
+|-- models         
+|   |-- index.js    # Instantiate db object, connect to remote/local postgres
+                    # It sets up the connection between the local or remote PostgreSQL database and the Sequelize ORM
+|   |-- order.js    # Mapping between Postgres table and fields of Order JS object
+                    # It sets up the mapping between the fields of an Order object (coinbase_id, amount, time) and the
+                    # corresponding STRING, FLOAT, and STRING fields of the Orders table in the bitdb0 database.
+                    
+         Sequelize- # It's a popular Object/Relational Mapper for node, used in this case to connect to a local or 
+                    # remote postgres database in models/index.js and then set up a mapping in models/order.js between 
+                    # the relational DB table named Order and the Order JS object.         
+                    
+                    
+                    
+|-- package.json    # Define which npm modules are needed; used for Heroku deploy
+|-- pgsetup.sh      # Set up local Postgres db from .pgpass for use by index.js
+                    # It parses .pgpass and creates a Postgres database with the given name and user. It also sets up a 
+                    # symlink to .pgpass in the home directory such that psql can be used, and creates a simple test table 
+                    # to confirm that everything worked.
+
+|-- setup-ssjs.sh   # Set up npm, heroku, and postgres for the app to run
+|-- views          
+|   `-- orders.ejs  # template for displaying Order instances as HTML
+                    # It describes how an array of Order objects will be rendered in a table. The template is loaded 
+                    # and populated with just such an array by web.js when the /order relative URL is loaded.
+                    
+`-- web.js          # Main express app; defines /, /order, and /refresh_order routes
+                    # It defines JS functions that are run when particular HTTP resources are requested
+                    
+            async-  # It provides higher order functions for working with asynchronous Javascript, and is specifically
+                    # used to add each order to the database independently in web.js
+                    
+           Express  # It's a web framework for parsing HTTP requests and generating HTTP responses, and used to set up 
+                    # the routes for the app
+                    
+      Postgress     # It's used both locally and remotely. Locally, we set up a database named bitdb0 as specified in 
+                    # .pgpass using pgsetup. Whether remote or local, the database is read and written from models/order.js.              
+                    
+  bitdb0 Postrgres DB  # It's defined (along with user and pass) in the .pgpass file, 
+                       # created by pgsetup.sh, connected to an Order object via Sequelize in model/index.js, 
+                       # and used as a local database for debugging
+                       
+     heroku config:psuh # It pushes the variables defined in .env to the remote running Heroku app
+     
+   foreman start      #It allows you to simulate running Heroku locally, by starting up "dynos"
+                       # and using the local .env file
+                       
+why /refresh_orders? #It's better to locally cache the new orders in the database via /refresh_orders than
+                        #to issue a new API call to Coinbase every time the /order page is loaded                
+                       
+async.forEach(orders_json.orders, addOrder, ...   
+                    # It calls addOrder asynchronously on each item in the orders_json.orders array and redirects to
+                    #  "/orders" when all Orders have been added successfully
+                    
+   (to run local)                 
+   psql -d template1 -c "ALTER USER ubuntu WITH PASSWORD 'bitpass0';"
+   
+   (also need to modify "data-code" for bitcoin button)

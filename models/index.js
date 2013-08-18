@@ -1,3 +1,17 @@
+// Instantiate db object, connect to remote/local postgres
+// It sets up the connection between the local or remote PostgreSQL database and the Sequelize ORM
+
+//Sequelize- Is a popular Object/Relational Mapper for node, used in this case to connect to a local or 
+//           remote postgres database in models/index.js and then set up a mapping in models/order.js between 
+//           the relational DB table named Order and the Order JS object.    
+
+//Postgres-  Is used both locally and remotely. Locally, we set up a database named bitdb0 as specified in 
+//           .pgpass using pgsetup. Whether remote or local, the database is read and written from models/order.js. 
+
+//bitdb0 Postrgres DB- It's defined (along with user and pass) in the .pgpass file, 
+//                     created by pgsetup.sh, connected to an Order object via Sequelize in model/index.js, 
+//                     and used as a local database for debugging
+
 if (!global.hasOwnProperty('db')) {
     var Sequelize = require('sequelize');
     var sq = null;
